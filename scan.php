@@ -81,6 +81,6 @@ if ($search):
 
 endif;
 ?>
-<div class="text-center">FRANKIE MAKERS :: Hunter - Substring hunting in php, js, css files</div></div>
+<div class="text-center">FRANKIE MAKERS :: Hunter - Substring hunting</div></div>
 </body>
 </html>
