@@ -25,6 +25,8 @@ $search = ($_GET) ? stripslashes($_GET['q']) : '';
     </div>
 </form>
 <?php
+$extensions = array('php', 'js', 'css', 'less', 'sccs', 'tpl');
+
 $droot = $_SERVER["DOCUMENT_ROOT"];
 $files = new ArrayObject;
 $colors = array(
@@ -65,21 +67,17 @@ if ($search):
         $info = pathinfo($path);
         $basename = $info['basename'];
         $extension = $info['extension'];
-        if ($basename != 'scan.php' && ($extension == 'php' || $extension == 'js' || $extension == 'css')) {
+        if ($basename != 'scan.php' && in_array($extension, $extensions)) {
             $source = file_get_contents($path);
             if (strpos($source, $search) !== false) {
                 $_path = str_replace($_SERVER["DOCUMENT_ROOT"], '', $path);
                 $count = substr_count($source, $search);
                 $parts = explode('/', trim($_path, '/'));
-                if ($extension == 'php') $files['php'][] = array('count' => $count, 'parts' => $parts);
-                if ($extension == 'js') $files['js'][] = array('count' => $count, 'parts' => $parts);
-                if ($extension == 'css') $files['css'][] = array('count' => $count, 'parts' => $parts);
+                $files[$extension][] = array('count' => $count, 'parts' => $parts);
             }
         }
     }
-    printOutput('php');
-    printOutput('js');
-    printOutput('css');
+    foreach ($extensions as $extension) printOutput($extension); 
 
 endif;
 ?>
