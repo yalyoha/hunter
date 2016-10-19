@@ -11,7 +11,6 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 <body style="margin: 20px;">
 <?php
-$search = ($_POST) ? stripslashes($_POST['q']) : '';
 $search = ($_GET) ? stripslashes($_GET['q']) : '';
 ?>
 <form style="float: right;" action="/scan.php" method="get">
