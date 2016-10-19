@@ -7,7 +7,6 @@ header('Content-Type: text/html; charset=utf-8');
 <meta charset="utf-8">
 <title>scan.php</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body style="margin: 20px;">
 <?php
