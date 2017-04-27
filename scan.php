@@ -58,7 +58,7 @@ $extensions = array(
     'js',
     'css',
     'less',
-    'sccs',
+    'scss',
     'tpl');
 
 function printOutput($extension)
