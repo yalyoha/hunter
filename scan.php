@@ -106,21 +106,24 @@ if ($search):
         $basename = $info['basename'];
         $extension = $info['extension'];
         if ($basename != BASE_NAME && in_array($extension, $extensions)) {
-            $source = file_get_contents($path);
-            $file = file($path);
-            if (strpos($source, $search) !== false) {
-                $_path = str_replace($_SERVER["DOCUMENT_ROOT"], '', $path);
-                $entries = getLinesWithString($file, $search);
-                $countLines = count($file);
-                $countEntries = substr_count($source, $search);
-                $parts = explode('/', trim($_path, '/'));
-                $files[$extension][] = array(
-                    'count' => $countEntries,
-                    'parts' => $parts,
-                    'path' => $path,
-                    'lines' => $countLines,
-                    'entries' => $entries);
-            }
+            if (filesize($path) < 1000000) {
+                $source = file_get_contents($path);
+                $file = file($path);
+                if (strpos($source, $search) !== false) {
+                    $_path = str_replace($_SERVER["DOCUMENT_ROOT"], '', $path);
+                    $entries = getLinesWithString($file, $search);
+                    $countLines = count($file);
+                    $countEntries = substr_count($source, $search);
+                    $parts = explode('/', trim($_path, '/'));
+                    $files[$extension][] = array(
+                        'count' => $countEntries,
+                        'parts' => $parts,
+                        'path' => $path,
+                        'lines' => $countLines,
+                        'entries' => $entries);
+                }
+            } else  echo '<div>' . $path . ' File size: <span style="color:red">' . filesize($path) . '</span> bytes!</div>';
+
         }
     }
     foreach ($extensions as $extension) printOutput($extension);
