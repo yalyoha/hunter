@@ -1,2 +1,1 @@
-# hunter
-FRANKIE MAKERS :: Hunter - Substring hunting
+Hunter - Substring hunting
