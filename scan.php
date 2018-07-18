@@ -63,7 +63,7 @@ $extensions = array(
 
 function printOutput($extension)
 {
-    global $files, $colors;
+    global $files, $colors, $defaultColor;
     if (isset($files[$extension]) && $files[$extension]) {
         $i = 0;
         echo '<ul>';
