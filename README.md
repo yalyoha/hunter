@@ -1,1 +1,1 @@
-Hunter - Substring hunting
+Hunter - Substring hunting (Single-file program)
